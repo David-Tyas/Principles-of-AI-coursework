@@ -37,10 +37,15 @@ testing_median_incomes,
 training_median_house_values,
 testing_median_house_values) = train_test_split(median_incomes, median_house_values, train_size=0.2)
 
-'''with open("features.json", "w") as file:
-    json.dump(features.tolist(), file)
-with open("median_incomes.json", "w") as file:
-    json.dump(median_incomes.tolist(), file)'''
+def put_array_in_json_file(arr, file_name):
+    with open(file_name, "w") as file:
+        json.dump(arr.tolist(), file)
+'''put_array_in_json_file(features, "features.json")
+put_array_in_json_file(median_incomes, "median_incomes.json")'''
+put_array_in_json_file(training_median_incomes, "training_median_incomes.json")
+put_array_in_json_file(testing_median_incomes, "testing_median_incomes.json")
+put_array_in_json_file(training_median_house_values, "training_median_house_values.json")
+put_array_in_json_file(testing_median_house_values, "testing_median_house_values.json")
 
 plt.style.use("_mpl-gallery")
 plt.scatter(median_incomes, median_house_values)
