@@ -10,12 +10,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import json
 
-(xs, ys) = datasets.fetch_california_housing(return_X_y=True)
-median_income = xs[: , 0]
-'''with open("xs.json", "w") as file:
-    json.dump(xs.tolist(), file)
-with open("median_income.json", "w") as file:
-    json.dump(median_income.tolist(), file)'''
+(features, median_house_values) = datasets.fetch_california_housing(return_X_y=True)
+median_incomes = features[: , 0]
+with open("features.json", "w") as file:
+    json.dump(features.tolist(), file)
+with open("median_incomes.json", "w") as file:
+    json.dump(median_incomes.tolist(), file)
 
 plt.style.use("_mpl-gallery")
-plt.scatter(median_income,ys)
+plt.scatter(median_incomes, median_house_values)
