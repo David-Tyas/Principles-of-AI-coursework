@@ -1,7 +1,9 @@
 # Principles of AI coursework
 
 Packages used:
-- scikit-learn
+- sklearn
+	- sklearn.datasets
 - matplotlib
+	- matplotlib.pyplot
 - numpy
 - json (testing purposes only)
