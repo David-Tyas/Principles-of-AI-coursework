@@ -6,6 +6,7 @@ Created on Fri Mar 14 14:49:21 2025
 """
 
 import sklearn.datasets as datasets
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import numpy as np
 import json
@@ -30,6 +31,11 @@ Min: {format_house_value(np.min(median_house_values))}
 Mean: {format_house_value(np.mean(median_house_values))}
 Median: {format_house_value(np.median(median_house_values))}
 Standard deviation: {format_house_value(np.std(median_house_values))}""")
+
+(training_median_incomes,
+testing_median_incomes,
+training_median_house_values,
+testing_median_house_values) = train_test_split(median_incomes, median_house_values, train_size=0.2)
 
 '''with open("features.json", "w") as file:
     json.dump(features.tolist(), file)
