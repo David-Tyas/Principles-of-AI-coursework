@@ -11,8 +11,11 @@ import numpy as np
 import json
 
 (xs, ys) = datasets.fetch_california_housing(return_X_y=True)
-with open("xs.json", "w") as file:
+median_income = xs[: , 0]
+'''with open("xs.json", "w") as file:
     json.dump(xs.tolist(), file)
+with open("median_income.json", "w") as file:
+    json.dump(median_income.tolist(), file)'''
 
-'''plt.style.use("_mpl-gallery")
-plt.scatter(xs,ys)'''
+plt.style.use("_mpl-gallery")
+plt.scatter(median_income,ys)
