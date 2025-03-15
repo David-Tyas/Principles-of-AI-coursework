@@ -22,12 +22,14 @@ print(f"""Median income statistics:
 Max: {format_income(np.max(median_incomes))}
 Min: {format_income(np.min(median_incomes))}
 Mean: {format_income(np.mean(median_incomes))}
-Median: {format_income(np.median(median_incomes))}""", end="\n\n")
+Median: {format_income(np.median(median_incomes))}
+Standard deviation: {format_income(np.std(median_incomes))}""", end="\n\n")
 print(f"""Median house value statistics:
 Max: {format_house_value(np.max(median_house_values))}
 Min: {format_house_value(np.min(median_house_values))}
 Mean: {format_house_value(np.mean(median_house_values))}
-Median: {format_house_value(np.median(median_house_values))}""")
+Median: {format_house_value(np.median(median_house_values))}
+Standard deviation: {format_house_value(np.std(median_house_values))}""")
 
 '''with open("features.json", "w") as file:
     json.dump(features.tolist(), file)
