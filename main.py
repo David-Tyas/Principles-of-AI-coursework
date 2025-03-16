@@ -43,9 +43,13 @@ def put_array_in_json_file(arr, file_name):
 '''put_array_in_json_file(features, "features.json")
 put_array_in_json_file(median_incomes, "median_incomes.json")'''
 put_array_in_json_file(training_median_incomes, "training_median_incomes.json")
+training_median_incomes.dump("training_median_incomes.pickle")
 put_array_in_json_file(testing_median_incomes, "testing_median_incomes.json")
+testing_median_incomes.dump("testing_median_incomes.pickle")
 put_array_in_json_file(training_median_house_values, "training_median_house_values.json")
+training_median_house_values.dump("training_median_house_values.pickle")
 put_array_in_json_file(testing_median_house_values, "testing_median_house_values.json")
+testing_median_house_values.dump("testing_median_house_values.pickle")
 
 plt.style.use("_mpl-gallery")
 plt.scatter(median_incomes, median_house_values)
