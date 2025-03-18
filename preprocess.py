@@ -19,7 +19,7 @@ def format_income(income):
 def format_house_value(house_value):
     return f"${(house_value * 100_000):.2f}"
 
-statistics = {
+stats = {
     "Median income": {
         "Max": format_income(np.max(median_incomes)),
         "Min": format_income(np.min(median_incomes)),
@@ -35,8 +35,8 @@ statistics = {
         "Standard deviation": format_house_value(np.std(median_house_values))
     }
 }
-with open("statistics.json", "w") as file:
-    json.dump(statistics, file)
+'''with open("statistics.json", "w") as file:
+    json.dump(stats, file)
 print(f"""Median income statistics:
 Max: {format_income(np.max(median_incomes))}
 Min: {format_income(np.min(median_incomes))}
@@ -48,7 +48,7 @@ Max: {format_house_value(np.max(median_house_values))}
 Min: {format_house_value(np.min(median_house_values))}
 Mean: {format_house_value(np.mean(median_house_values))}
 Median: {format_house_value(np.median(median_house_values))}
-Standard deviation: {format_house_value(np.std(median_house_values))}""")
+Standard deviation: {format_house_value(np.std(median_house_values))}""")'''
 
 '''(training_median_incomes,
 testing_median_incomes,
@@ -70,4 +70,6 @@ put_array_in_json_file(testing_median_house_values, "testing_median_house_values
 testing_median_house_values.dump("testing_median_house_values.pickle")'''
 
 plt.style.use("_mpl-gallery")
+'''plt.axis([np.min(median_incomes), np.max(median_incomes),
+          np.min(median_house_values), np.max(median_house_values)])'''
 plt.scatter(median_incomes, median_house_values)
