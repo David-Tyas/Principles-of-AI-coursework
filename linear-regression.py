@@ -20,6 +20,6 @@ prediction = linear_regression.predict(testing_median_house_values.reshape(-1,1)
 #print(linear_regression.coef_)
 
 plt.style.use("_mpl-gallery")
-plt.scatter(testing_median_incomes, testing_median_house_values)
+plt.scatter(testing_median_incomes, testing_median_house_values, c="#00ff00", edgecolors="#000000")
 
 plt.axline((0.0, linear_regression.intercept_[0]), (1.0, linear_regression.coef_[0][0] + linear_regression.intercept_[0]))
