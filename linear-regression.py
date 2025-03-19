@@ -31,4 +31,8 @@ print(f"""Predicted median house value for median income of {format_income(examp
 plt.style.use("_mpl-gallery")
 plt.scatter(testing_median_incomes, testing_median_house_values, c="#00ff00", edgecolors="#000000")
 
+y_intercept = linear_regression.intercept_[0]
+second_y_value = linear_regression.coef_[0][0] + linear_regression.intercept_[0]
+assert y_intercept == linear_regression.predict(np.array(0.0).reshape(-1,1))[0][0]
+assert second_y_value == linear_regression.predict(np.array(1.0).reshape(-1,1))[0][0]
 plt.axline((0.0, linear_regression.intercept_[0]), (1.0, linear_regression.coef_[0][0] + linear_regression.intercept_[0]))
