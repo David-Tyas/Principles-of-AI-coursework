@@ -30,7 +30,7 @@ with open(r".\UCI HAR dataset\train\X_train.txt", "r") as file:
         '''print(number_tokens)
         training_xs.append([float(x) for x in filter(lambda token: token != "", number_tokens)])'''
 
-with open(r".\UCI HAR dataset\train\subject_train.txt", "r") as file:
+'''with open(r".\UCI HAR dataset\train\subject_train.txt", "r") as file:
     i = 0
     while True:
         line = file.readline()
@@ -40,7 +40,7 @@ with open(r".\UCI HAR dataset\train\subject_train.txt", "r") as file:
         line = line[:-1]
         assert i < len(training_xs)
         training_xs[i].append(int(line))
-        i += 1
+        i += 1'''
 
 with open(r".\UCI HAR dataset\train\y_train.txt", "r") as file:
     while True:
