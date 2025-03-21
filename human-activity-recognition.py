@@ -5,6 +5,9 @@ Created on Wed Mar 19 12:58:57 2025
 @author: David Tyas
 """
 
+import sklearn.decomposition as decomp
+from sklearn.pipeline import Pipeline
+import sklearn.preprocessing as preprocessing
 import sklearn.svm as svm
 import matplotlib.pyplot as plt
 import numpy as np
@@ -49,3 +52,9 @@ with open(r".\UCI HAR dataset\train\y_train.txt", "r") as file:
             break
         assert line[-1] == "\n"
         activities.append(1 if int(line[:-1]) > 3 else 0)
+
+pipeline = Pipeline([
+    ('scalar', preprocessing.StandardScalar),
+    ('pca', decomp.PCS(n_components=50)),
+    ('svc', svm.SVC())
+])
