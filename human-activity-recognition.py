@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 training_xs = []
-activities = []
+training_ys = []
 
 with open(r".\UCI HAR dataset\train\X_train.txt", "r") as file:
     while True:
@@ -51,10 +51,13 @@ with open(r".\UCI HAR dataset\train\y_train.txt", "r") as file:
         if line == "":
             break
         assert line[-1] == "\n"
-        activities.append(1 if int(line[:-1]) > 3 else 0)
+        training_ys.append(1 if int(line[:-1]) > 3 else 0)
 
 pipeline = Pipeline([
-    ('scalar', preprocessing.StandardScalar),
-    ('pca', decomp.PCS(n_components=50)),
+    ('scalar', preprocessing.StandardScaler),
+    ('pca', decomp.PCA(n_components=50)),
     ('svc', svm.SVC())
 ])
+
+svc = svm.LinearSVC()
+svc.fit(training_xs, training_ys)
