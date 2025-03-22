@@ -82,3 +82,24 @@ with open(r".\UCI HAR dataset\test\y_test.txt", "r") as file:
 svc = svm.LinearSVC()
 svc.fit(training_xs, training_ys)
 print(svc.score(testing_xs, testing_ys))
+
+def calculate_confusion_matrix(model, xs, ys):
+    tp = 0
+    fp = 0
+    tn = 0
+    fn = 0
+    for (i, x) in enumerate(xs):
+        y = ys[i]
+        if model.predict(np.array(x).reshape(1, -1)) == y:
+            if y == 1:
+                tp += 1
+            else:
+                tn += 1
+        else:
+            if y == 1:
+                fn += 1
+            else:
+                fp += 1
+    assert tp + fp + tn + fn == len(xs)
+    return [[tp, fp], [tn, fn]]
+print(calculate_confusion_matrix(svc, testing_xs, testing_ys))
