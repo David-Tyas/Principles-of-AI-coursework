@@ -79,11 +79,5 @@ with open(r".\UCI HAR dataset\test\y_test.txt", "r") as file:
         assert line[-1] == "\n"
         testing_ys.append(1 if int(line[:-1]) > 3 else 0)
 
-pipeline = Pipeline([
-    ('scalar', preprocessing.StandardScaler),
-    ('pca', decomp.PCA(n_components=50)),
-    ('svc', svm.SVC())
-])
-
 svc = svm.LinearSVC()
 svc.fit(training_xs, training_ys)
