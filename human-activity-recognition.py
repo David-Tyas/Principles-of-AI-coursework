@@ -81,3 +81,4 @@ with open(r".\UCI HAR dataset\test\y_test.txt", "r") as file:
 
 svc = svm.LinearSVC()
 svc.fit(training_xs, training_ys)
+print(svc.score(testing_xs, testing_ys))
