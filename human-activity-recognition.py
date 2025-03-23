@@ -11,6 +11,7 @@ import sklearn.preprocessing as preprocessing
 import sklearn.svm as svm
 import matplotlib.pyplot as plt
 import numpy as np
+import json
 
 training_xs = []
 testing_xs = []
@@ -78,6 +79,10 @@ with open(r".\UCI HAR dataset\test\y_test.txt", "r") as file:
             break
         assert line[-1] == "\n"
         testing_ys.append(1 if int(line[:-1]) > 3 else 0)
+
+mean = np.mean(training_xs, axis=0)
+assert len(mean) == len(training_xs[0])
+print(mean)
 
 svc = svm.LinearSVC()
 svc.fit(training_xs, training_ys)
