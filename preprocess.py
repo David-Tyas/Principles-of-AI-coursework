@@ -72,4 +72,6 @@ testing_median_house_values.dump("testing_median_house_values.pickle")'''
 plt.style.use("_mpl-gallery")
 '''plt.axis([np.min(median_incomes), np.max(median_incomes),
           np.min(median_house_values), np.max(median_house_values)])'''
+plt.xlabel("Median income of district ($10,000s)", wrap=True)
+plt.ylabel("Median house value of district ($100,000s)", wrap=True)
 plt.scatter(median_incomes, median_house_values, c="#00ff00", edgecolors="#0000ff")
