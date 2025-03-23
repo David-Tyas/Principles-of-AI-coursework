@@ -72,4 +72,4 @@ testing_median_house_values.dump("testing_median_house_values.pickle")'''
 plt.style.use("_mpl-gallery")
 '''plt.axis([np.min(median_incomes), np.max(median_incomes),
           np.min(median_house_values), np.max(median_house_values)])'''
-plt.scatter(median_incomes, median_house_values)
+plt.scatter(median_incomes, median_house_values, c="#00ff00", edgecolors="#0000ff")
