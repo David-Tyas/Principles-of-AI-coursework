@@ -84,9 +84,12 @@ mean = np.mean(training_xs, axis=0)
 assert len(mean) == len(training_xs[0])
 print(mean)
 
-svc = svm.LinearSVC()
+'''svc = svm.LinearSVC()
 svc.fit(training_xs, training_ys)
-print(svc.score(testing_xs, testing_ys))
+print(svc.score(testing_xs, testing_ys))'''
+linear_svc = svm.SVC(kernel="linear")
+linear_svc.fit(training_xs, training_ys)
+print(linear_svc.score(testing_xs, testing_ys))
 
 def calculate_confusion_matrix(model, xs, ys):
     tp = 0
@@ -107,4 +110,4 @@ def calculate_confusion_matrix(model, xs, ys):
                 fp += 1
     assert tp + fp + tn + fn == len(xs)
     return [[tp, fp], [tn, fn]]
-print(calculate_confusion_matrix(svc, testing_xs, testing_ys))
+print(calculate_confusion_matrix(linear_svc, testing_xs, testing_ys))
