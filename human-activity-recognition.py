@@ -89,7 +89,8 @@ svc.fit(training_xs, training_ys)
 print(svc.score(testing_xs, testing_ys))'''
 linear_svc = svm.SVC(kernel="linear")
 linear_svc.fit(training_xs, training_ys)
-print(linear_svc.score(testing_xs, testing_ys))
+polynomial_svc = svm.SVC(kernel="poly")
+polynomial_svc.fit(training_xs, training_ys)
 
 def calculate_confusion_matrix(model, xs, ys):
     tp = 0
@@ -110,4 +111,15 @@ def calculate_confusion_matrix(model, xs, ys):
                 fp += 1
     assert tp + fp + tn + fn == len(xs)
     return [[tp, fp], [tn, fn]]
-print(calculate_confusion_matrix(linear_svc, testing_xs, testing_ys))
+
+def calculate_accuracy(confusion_matrix):
+    mat = confusion_matrix
+    return ((mat[0][0] + mat[1][0])/
+    (mat[0][0] + mat[0][1] + mat[1][0] + mat[1][1]))
+
+linear_svc_confusion_matrix = calculate_confusion_matrix(linear_svc, testing_xs, testing_ys)
+print(f"Confusion matrix for linear SVC: {linear_svc_confusion_matrix}")
+print(f"Accuracy of linear SVC: {calculate_accuracy(linear_svc_confusion_matrix)}")
+polynomial_svc_confusion_matrix = calculate_confusion_matrix(polynomial_svc, testing_xs, testing_ys)
+print(f"Confusion matrix for polynomial SVC: {polynomial_svc_confusion_matrix}")
+print(f"Accuracy of polynomial SVC: {calculate_accuracy(polynomial_svc_confusion_matrix)}")
