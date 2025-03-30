@@ -8,4 +8,4 @@ Packages used:
 - matplotlib
 	- matplotlib.pyplot
 - numpy
-- json (testing purposes only)
+- json
