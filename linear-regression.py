@@ -19,11 +19,11 @@ testing_median_incomes = np.load("testing_median_incomes.pickle", allow_pickle=T
 training_median_house_values = np.load("training_median_house_values.pickle", allow_pickle=True)
 testing_median_house_values = np.load("testing_median_house_values.pickle", allow_pickle=True)
 
-linear_regression = linear.LinearRegression()
-linear_regression.fit(training_median_incomes.reshape(-1,1),training_median_house_values.reshape(-1,1))
-prediction = linear_regression.predict(testing_median_house_values.reshape(-1,1))
+med_inc_lin_reg = linear.LinearRegression()
+med_inc_lin_reg.fit(training_median_incomes.reshape(-1,1),training_median_house_values.reshape(-1,1))
+prediction = med_inc_lin_reg.predict(testing_median_house_values.reshape(-1,1))
 example_median_income = 8.0
-example_prediction = linear_regression.predict(np.array(example_median_income).reshape(1,-1))[0][0]
+example_prediction = med_inc_lin_reg.predict(np.array(example_median_income).reshape(1,-1))[0][0]
 print(f"""Predicted median house value for median income of {format_income(example_median_income)}:
 {format_house_value(example_prediction)}""")
 #print(linear_regression.coef_)
@@ -33,8 +33,11 @@ plt.scatter(testing_median_incomes, testing_median_house_values, c="#00ff00", ed
 plt.xlabel("Median income of district ($10,000s)", wrap=True)
 plt.ylabel("Median house value of district ($100,000s)", wrap=True)
 
-y_intercept = linear_regression.intercept_[0]
-second_y_value = linear_regression.coef_[0][0] + linear_regression.intercept_[0]
-assert y_intercept == linear_regression.predict(np.array(0.0).reshape(1,-1))[0][0]
-assert second_y_value == linear_regression.predict(np.array(1.0).reshape(1,-1))[0][0]
-plt.axline((0.0, linear_regression.intercept_[0]), (1.0, linear_regression.coef_[0][0] + linear_regression.intercept_[0]))
+y_intercept = med_inc_lin_reg.intercept_[0]
+second_y_value = med_inc_lin_reg.coef_[0][0] + med_inc_lin_reg.intercept_[0]
+assert (y_intercept ==
+        med_inc_lin_reg.predict(np.array(0.0).reshape(1,-1))[0][0])
+assert (second_y_value ==
+        med_inc_lin_reg.predict(np.array(1.0).reshape(1,-1))[0][0])
+plt.axline((0.0, med_inc_lin_reg.intercept_[0]),
+           (1.0, med_inc_lin_reg.coef_[0][0] + med_inc_lin_reg.intercept_[0]))
